@@ -45,15 +45,9 @@ app.delete('/api/notes/:id', (request, response, next) => {
 app.post('/api/notes', (request, response, next) => {
   const note = request.body
 
-  if (!note || !note.content) {
-    return response.status(400).json({
-      error: 'note.content is missing'
-    })
-  }
-
   const newNote = new Note({
     content: note.content,
-    important: typeof note.important !== 'undefined' ? note.important : false,
+    important: note.important || false,
     date: new Date().toISOString()
   })
 
@@ -66,13 +60,15 @@ app.put('/api/notes/:id', (request, response, next) => {
   const { id } = request.params
   const { content, important } = request.body
 
-  const newNoteInfo = { content, important }
-
-  Note.findByIdAndUpdate(id, newNoteInfo, { new: true })
-    .then(noteUpdated => {
-      response.json(noteUpdated)
-    })
-    .catch(error => next(error))
+  Note.findByIdAndUpdate(
+    id,
+    { content, important },
+    { new: true, runValidators: true, context: 'query' }
+  )
+  .then(noteUpdated => {
+    response.json(noteUpdated)
+  })
+  .catch(error => next(error))
 })
 
 app.use(notFound)
