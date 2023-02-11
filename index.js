@@ -65,10 +65,10 @@ app.put('/api/notes/:id', (request, response, next) => {
     { content, important },
     { new: true, runValidators: true, context: 'query' }
   )
-  .then(noteUpdated => {
-    response.json(noteUpdated)
-  })
-  .catch(error => next(error))
+    .then(noteUpdated => {
+      response.json(noteUpdated)
+    })
+    .catch(error => next(error))
 })
 
 app.use(notFound)

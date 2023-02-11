@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nodemon index.js",
     "start": "node index.js",
-    "lint": "standard index.js",
+    "lint": "standard .",
+    "fix": "standard --fix .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
