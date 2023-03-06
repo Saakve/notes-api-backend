@@ -9,7 +9,7 @@
     "lint": "standard .",
     "fix": "standard --fix .",
     "test": "cross-env NODE_ENV=test jest --verbose --silent",
-    "test:watch":"npm run test -- --watch"
+    "test:watch": "npm run test -- --watch"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +22,7 @@
     "supertest": "^6.3.3"
   },
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "cors": "2.8.5",
     "dotenv": "16.0.1",
     "express": "4.18.1",

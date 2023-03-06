@@ -13,3 +13,11 @@ Content-Type: application/json
 {
     "content": "Nueva nota"
 }
+
+###
+POST http://localhost:3001/api/notes
+Content-Type: application/json
+
+{
+    "content": ""
+}
