@@ -29,11 +29,15 @@ notesRouter.delete('/:id', async (request, response, next) => {
 })
 
 notesRouter.post('/', async (request, response, next) => {
-    const note = request.body
+    const {
+        content,
+        important = false,
+        userId
+    } = request.body
 
     const newNote = new Note({
-        content: note.content,
-        important: note.important || false,
+        content,
+        important,
         date: new Date().toISOString()
     })
 

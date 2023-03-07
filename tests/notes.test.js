@@ -1,6 +1,6 @@
 const moongose = require('mongoose')
 
-const { server} = require('../index.js')
+const { server } = require('../index.js')
 const Note = require('../models/Note')
 const { initialNotes, api, getAllContentsFromNotes} = require("./helpers") 
 

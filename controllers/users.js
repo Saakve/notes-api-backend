@@ -2,7 +2,12 @@ const bcrypt = require('bcrypt') //Se usa para encriptar
 const usersRouter = require('express').Router()
 const User = require('../models/User')
 
-usersRouter.post('/', async (request, response) => {
+usersRouter.get('/', async (request, response) => {
+    const users = await User.find({})
+    response.json(users)
+})
+
+usersRouter.post('/', async (request, response, next) => {
     const {username, name, password } = request.body
 
     const saltRounds = 10 //La mayoria asigna el valor de 10 como complejidad algoritmítica
@@ -14,8 +19,12 @@ usersRouter.post('/', async (request, response) => {
         passwordHash
     })
 
-    const savedUser = await user.save()
-    response.json(savedUser)
+    try {
+        const savedUser = await user.save()
+        response.status(201).json(savedUser)
+    } catch (error) {
+        next(error)
+    }
 })
 
 module.exports = usersRouter
