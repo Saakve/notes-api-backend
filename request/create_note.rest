@@ -1,8 +1,18 @@
 POST http://localhost:3001/api/notes
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MDZiZWMwM2M0ZjQwNTNjMTIxNWI5ZCIsInVzZXJuYW1lIjoic2Fha3ZlIiwiaWF0IjoxNjc4MTk5MDY0fQ.6NMJ7jGRkiQyy2IuuwpItYg2sDCYHpfrvzi_fjehwkY
 
 {
-    "content": "Nueva nota dasdas",
+    "content": "Otra nota más con el token",
+    "important": true
+}
+
+###
+POST http://localhost:3001/api/notes
+Content-Type: application/json
+
+{
+    "content": "Otra nota de prueba",
     "important": true
 }
 
